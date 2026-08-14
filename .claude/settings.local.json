@@ -1,0 +1,16 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pnpm build *)",
+      "Bash(awk 'NR>=559 && NR<=600' \"src/催眠APP前端/components/HypnosisApp.tsx\")",
+      "Bash(awk 'NR>=930 && NR<=1010' \"src/催眠APP前端/components/HypnosisApp.tsx\")",
+      "Bash(awk 'NR>=1225 && NR<=1290' \"src/催眠APP前端/components/HypnosisApp.tsx\")",
+      "Bash(awk 'NR>=623 && NR<=680' \"src/催眠APP前端/components/HypnosisApp.tsx\")",
+      "Bash(awk 'NR>=1455 && NR<=1485' \"src/催眠APP前端/components/HypnosisApp.tsx\")",
+      "Bash(awk 'NR>=1772 && NR<=1822' \"src/催眠APP前端/components/HypnosisApp.tsx\")",
+      "Bash(awk 'NR>=600 && NR<=720' \"src/催眠APP前端/services/dataService.ts\")",
+      "Bash(awk 'NR>=85 && NR<=120' \"src/催眠APP前端/prompts/hypnosisSend.ts\")",
+      "Bash(awk 'NR>=822 && NR<=920' \"src/催眠APP前端/prompts/hypnosisSend.ts\")"
+    ]
+  }
+}
