@@ -41,13 +41,9 @@ export function isSecondaryApiConfigured(settings: SecondaryApiSettings): boolea
 
 export type ChatMessage = { role: 'system' | 'user' | 'assistant'; content: string };
 
-export type GenerateResult =
-  | { ok: true; text: string }
-  | { ok: false; error: string };
+export type GenerateResult = { ok: true; text: string } | { ok: false; error: string };
 
-export type ListModelsResult =
-  | { ok: true; models: string[] }
-  | { ok: false; error: string };
+export type ListModelsResult = { ok: true; models: string[] } | { ok: false; error: string };
 
 function normalizeBaseUrl(url: string): string {
   let u = url.trim();
@@ -194,9 +190,7 @@ export type ChallengeContext = {
   roleWorldbookEntries: Array<{ roleName: string; content: string }>; // 角色命名的世界书条目内容
 };
 
-export type GenerateChallengesResult =
-  | { ok: true; challenges: GeneratedChallengeRaw[] }
-  | { ok: false; error: string };
+export type GenerateChallengesResult = { ok: true; challenges: GeneratedChallengeRaw[] } | { ok: false; error: string };
 
 const CHALLENGE_SYSTEM_PROMPT = [
   '# Role & Objective',

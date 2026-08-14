@@ -420,7 +420,9 @@ export const AchievementApp: React.FC<AchievementAppProps> = ({ userData, onUpda
                           </span>
                         </h3>
                         <p className="text-xs text-gray-400 mt-1 pr-4">{q.target}</p>
-                        <div className="text-[10px] text-amber-200/80 mt-2 font-bold">奖励：{q.rewardText ?? `+${q.rewardMcEnergy} MC`}</div>
+                        <div className="text-[10px] text-amber-200/80 mt-2 font-bold">
+                          奖励：{q.rewardText ?? `+${q.rewardMcEnergy} MC`}
+                        </div>
                       </div>
                     </div>
 
@@ -500,8 +502,7 @@ export const AchievementApp: React.FC<AchievementAppProps> = ({ userData, onUpda
             </div>
 
             {challenges.map(c => {
-              const statusLabel =
-                c.status === 'COMPLETED' ? '可提交' : c.status === 'ACTIVE' ? '进行中' : '可接取';
+              const statusLabel = c.status === 'COMPLETED' ? '可提交' : c.status === 'ACTIVE' ? '进行中' : '可接取';
               const icon =
                 c.status === 'COMPLETED' ? (
                   <Gift size={18} className="text-amber-300" />

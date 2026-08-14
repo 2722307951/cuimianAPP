@@ -19,10 +19,7 @@ interface ShopItem {
 }
 
 // 跳蛋形状的 SVG 图标（椭圆形主体 + 上方信号线）
-const VibratorEggIcon: React.FC<{ size?: number | string; className?: string }> = ({
-  size = 24,
-  className,
-}) => (
+const VibratorEggIcon: React.FC<{ size?: number | string; className?: string }> = ({ size = 24, className }) => (
   <svg
     viewBox="0 0 24 24"
     width={size}
@@ -164,14 +161,11 @@ const HypnosisShop: React.FC<HypnosisShopProps> = ({ userData, onUpdateUser, onB
                 {/* 道具名称 */}
                 <div className="text-xs font-bold text-white mb-1">{item.name}</div>
                 {/* 道具描述 */}
-                <div className="text-[10px] text-gray-400 leading-relaxed flex-1 mb-3">
-                  {item.description}
-                </div>
+                <div className="text-[10px] text-gray-400 leading-relaxed flex-1 mb-3">{item.description}</div>
                 {/* 价格与购买按钮 */}
                 <div className="flex items-center justify-between">
                   <span className="flex items-center gap-1 text-[11px] font-bold text-amber-400">
-                    <Coins size={12} />
-                    ¥{item.price.toLocaleString()}
+                    <Coins size={12} />¥{item.price.toLocaleString()}
                   </span>
                   <button
                     type="button"

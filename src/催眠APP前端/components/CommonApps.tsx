@@ -442,9 +442,9 @@ const StatRow: React.FC<{ label: string; value: unknown }> = ({ label, value }) 
         ? 'from-emerald-400 to-cyan-400'
         : label === '好感度'
           ? 'from-pink-400 to-rose-400'
-        : label === '性欲'
-          ? 'from-fuchsia-400 to-cyan-400'
-          : 'from-cyan-400 to-violet-400';
+          : label === '性欲'
+            ? 'from-fuchsia-400 to-cyan-400'
+            : 'from-cyan-400 to-violet-400';
 
   return (
     <div className="p-3 rounded-xl border border-white/10 bg-black/20">
@@ -662,7 +662,11 @@ function parseSystemDate(
   if (!Number.isFinite(month) || !Number.isFinite(day)) return null;
   const weekdaySource = typeof rawWeekday === 'string' ? rawWeekday : rawDate;
   const weekMatch = /(星期|周)\s*([一二三四五六日天])/.exec(weekdaySource);
-  const weekdayLabel = weekMatch ? `${weekMatch[1]}${weekMatch[2]}` : typeof rawWeekday === 'string' ? rawWeekday : null;
+  const weekdayLabel = weekMatch
+    ? `${weekMatch[1]}${weekMatch[2]}`
+    : typeof rawWeekday === 'string'
+      ? rawWeekday
+      : null;
   const weekdayIndex = (() => {
     if (!weekMatch) return null;
     const map: Record<string, number> = { 日: 0, 天: 0, 一: 1, 二: 2, 三: 3, 四: 4, 五: 5, 六: 6 };

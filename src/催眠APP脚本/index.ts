@@ -61,7 +61,7 @@ type ParsedDate = {
 function computeWeekdayIndex(year: number, month: number, day: number): number | null {
   const date = new Date(year, month - 1, day);
   const weekday = date.getDay();
-  return Number.isFinite(weekday) ? ((weekday + 6) % 7) : null;
+  return Number.isFinite(weekday) ? (weekday + 6) % 7 : null;
 }
 
 function parseDateText(rawDate: unknown, rawWeekday?: unknown): ParsedDate | null {
@@ -75,7 +75,11 @@ function parseDateText(rawDate: unknown, rawWeekday?: unknown): ParsedDate | nul
   if (!Number.isFinite(month) || !Number.isFinite(day)) return null;
 
   const weekdaySource =
-    typeof rawWeekday === 'string' && rawWeekday.trim().length > 0 ? rawWeekday.trim() : typeof rawDate === 'string' ? rawDate : '';
+    typeof rawWeekday === 'string' && rawWeekday.trim().length > 0
+      ? rawWeekday.trim()
+      : typeof rawDate === 'string'
+        ? rawDate
+        : '';
   const weekdayMatch = /(星期|周)\s*([一二三四五六日天])/.exec(weekdaySource);
   const weekdayChar = weekdayMatch ? weekdayMatch[2] : null;
   const normalized = weekdayChar === '天' ? '日' : weekdayChar;

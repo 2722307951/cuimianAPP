@@ -102,9 +102,7 @@ const HypnosisBackpack: React.FC<HypnosisBackpackProps> = ({ onBack }) => {
                 {/* 物品名称 */}
                 <div className="text-xs font-bold text-white mb-1">{item.name}</div>
                 {/* 物品描述 */}
-                <div className="text-[10px] text-gray-400 leading-relaxed flex-1">
-                  {item.description || '暂无描述'}
-                </div>
+                <div className="text-[10px] text-gray-400 leading-relaxed flex-1">{item.description || '暂无描述'}</div>
               </div>
             ))}
           </div>

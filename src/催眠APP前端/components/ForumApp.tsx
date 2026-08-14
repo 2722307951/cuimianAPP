@@ -6,12 +6,26 @@ type ViewState = { mode: 'list' } | { mode: 'thread'; postId: number };
 
 // 贴吧风格：确定性昵称 + 头像配色，让每层楼看起来像不同网友（刷新后保持稳定）。
 const NICKNAMES = [
-  '路过的吃瓜群众', '深夜冲浪选手', '热心市民小张', '不愿透露姓名的网友',
-  '贴吧老哥', '围观路人甲', '半夜不睡觉', '本吧潜水员', '路过看看', '匿名网友',
+  '路过的吃瓜群众',
+  '深夜冲浪选手',
+  '热心市民小张',
+  '不愿透露姓名的网友',
+  '贴吧老哥',
+  '围观路人甲',
+  '半夜不睡觉',
+  '本吧潜水员',
+  '路过看看',
+  '匿名网友',
 ];
 const AVATAR_COLORS = [
-  'bg-rose-500', 'bg-amber-500', 'bg-emerald-500', 'bg-sky-500',
-  'bg-violet-500', 'bg-orange-500', 'bg-teal-500', 'bg-pink-500',
+  'bg-rose-500',
+  'bg-amber-500',
+  'bg-emerald-500',
+  'bg-sky-500',
+  'bg-violet-500',
+  'bg-orange-500',
+  'bg-teal-500',
+  'bg-pink-500',
 ];
 
 function hashStr(s: string): number {
@@ -129,23 +143,35 @@ const ForumApp: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     return (
       <div className="p-3.5 border-b border-white/5">
         <div className="flex items-center gap-2.5">
-          <div className={`w-8 h-8 rounded-full ${avatar} flex items-center justify-center text-white text-xs font-bold shrink-0`}>
+          <div
+            className={`w-8 h-8 rounded-full ${avatar} flex items-center justify-center text-white text-xs font-bold shrink-0`}
+          >
             {name.slice(0, 1)}
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center gap-1.5">
               <span className="text-[12px] font-semibold text-sky-300/90 truncate">{name}</span>
               {isOp && (
-                <span className="shrink-0 text-[9px] font-bold text-white bg-blue-500/80 px-1 py-0.5 rounded">楼主</span>
+                <span className="shrink-0 text-[9px] font-bold text-white bg-blue-500/80 px-1 py-0.5 rounded">
+                  楼主
+                </span>
               )}
             </div>
-            <div className="text-[10px] text-white/35 mt-0.5">{label} · {formatTime(ts)}</div>
+            <div className="text-[10px] text-white/35 mt-0.5">
+              {label} · {formatTime(ts)}
+            </div>
           </div>
         </div>
-        <div className="mt-2 text-[13px] text-white/85 leading-relaxed whitespace-pre-wrap break-words pl-[42px]">{text}</div>
+        <div className="mt-2 text-[13px] text-white/85 leading-relaxed whitespace-pre-wrap break-words pl-[42px]">
+          {text}
+        </div>
         <div className="mt-1.5 pl-[42px] flex items-center gap-4 text-[10px] text-white/35">
-          <span className="flex items-center gap-1"><ThumbsUp size={11} /> 赞</span>
-          <span className="flex items-center gap-1"><MessageCircle size={11} /> 回复</span>
+          <span className="flex items-center gap-1">
+            <ThumbsUp size={11} /> 赞
+          </span>
+          <span className="flex items-center gap-1">
+            <MessageCircle size={11} /> 回复
+          </span>
         </div>
       </div>
     );
@@ -158,7 +184,10 @@ const ForumApp: React.FC<{ onBack: () => void }> = ({ onBack }) => {
     return (
       <div className="flex-1 overflow-y-auto no-scrollbar">
         <div className="flex items-center gap-2 px-4 pt-2 pb-2">
-          <button onClick={() => setView({ mode: 'list' })} className="p-1.5 rounded-full hover:bg-white/10 transition-colors">
+          <button
+            onClick={() => setView({ mode: 'list' })}
+            className="p-1.5 rounded-full hover:bg-white/10 transition-colors"
+          >
             <ArrowLeft size={16} className="text-white/70" />
           </button>
           <span className="text-xs font-semibold text-white/70">{BAR_NAME} · 帖子</span>
@@ -168,23 +197,33 @@ const ForumApp: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         <div className="p-4 border-b border-white/10">
           <div className="text-base font-bold text-white/95 leading-snug">{post.title}</div>
           <div className="mt-3 flex items-center gap-2.5">
-            <div className={`w-9 h-9 rounded-full ${opAvatar} flex items-center justify-center text-white text-sm font-bold shrink-0`}>
+            <div
+              className={`w-9 h-9 rounded-full ${opAvatar} flex items-center justify-center text-white text-sm font-bold shrink-0`}
+            >
               {opName.slice(0, 1)}
             </div>
             <div className="min-w-0">
               <div className="flex items-center gap-1.5">
                 <span className="text-[12px] font-semibold text-sky-300/90 truncate">{opName}</span>
-                <span className="shrink-0 text-[9px] font-bold text-white bg-blue-500/80 px-1 py-0.5 rounded">楼主</span>
+                <span className="shrink-0 text-[9px] font-bold text-white bg-blue-500/80 px-1 py-0.5 rounded">
+                  楼主
+                </span>
               </div>
               <div className="text-[10px] text-white/35 mt-0.5">1楼 · {formatTime(post.createdAtMs)}</div>
             </div>
           </div>
           {post.body && (
-            <div className="mt-3 text-[13px] text-white/85 leading-relaxed whitespace-pre-wrap break-words">{post.body}</div>
+            <div className="mt-3 text-[13px] text-white/85 leading-relaxed whitespace-pre-wrap break-words">
+              {post.body}
+            </div>
           )}
           <div className="mt-3 flex items-center gap-4 text-[10px] text-white/35">
-            <span className="flex items-center gap-1"><ThumbsUp size={11} /> 赞</span>
-            <span className="flex items-center gap-1"><MessageCircle size={11} /> 回复</span>
+            <span className="flex items-center gap-1">
+              <ThumbsUp size={11} /> 赞
+            </span>
+            <span className="flex items-center gap-1">
+              <MessageCircle size={11} /> 回复
+            </span>
           </div>
         </div>
 

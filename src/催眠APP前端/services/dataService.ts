@@ -131,7 +131,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip3_visual_filter',
     title: '幻视滤镜',
-    description: '篡改目标的面部与身形识别信号，强制其视觉皮层将{{User}}的身体特征替换为指定的另一人，使其完全认不出{{User}}的真实身份。',
+    description:
+      '篡改目标的面部与身形识别信号，强制其视觉皮层将{{User}}的身体特征替换为指定的另一人，使其完全认不出{{User}}的真实身份。',
     tier: 'VIP1',
     costType: 'PER_MINUTE',
     costValue: 15,
@@ -232,7 +233,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip3_temp_false_memory',
     title: '临时虚假记忆',
-    description: '在限定轮次内向目标的记忆中临时植入一段完全虚构的经历，目标在催眠期间会深信其真实发生过，但轮次结束后会清醒意识到这段记忆是伪造的。',
+    description:
+      '在限定轮次内向目标的记忆中临时植入一段完全虚构的经历，目标在催眠期间会深信其真实发生过，但轮次结束后会清醒意识到这段记忆是伪造的。',
     tier: 'VIP2',
     costType: 'PER_MINUTE',
     costValue: 60,
@@ -267,7 +269,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_control_body_keep_conscious',
     title: '保留意识控制身体行动',
-    description: '在目标意识完全清醒且保留完整感官的情况下，强行接管其身体的运动控制权，令其眼睁睁看着自己的身体违背自身意志做出任何动作。',
+    description:
+      '在目标意识完全清醒且保留完整感官的情况下，强行接管其身体的运动控制权，令其眼睁睁看着自己的身体违背自身意志做出任何动作。',
     tier: 'VIP3',
     costType: 'PER_MINUTE',
     costValue: 120,
@@ -278,7 +281,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_control_body_no_conscious',
     title: '不保留意识控制身体行动',
-    description: '在完全抹除目标意识与感官反馈的情况下，强行接管其身体的运动控制权，使身体如同提线木偶般被操纵而目标毫无知觉。',
+    description:
+      '在完全抹除目标意识与感官反馈的情况下，强行接管其身体的运动控制权，使身体如同提线木偶般被操纵而目标毫无知觉。',
     tier: 'VIP3',
     costType: 'PER_MINUTE',
     costValue: 100,
@@ -289,7 +293,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip3_true_love',
     title: '真爱降临',
-    description: '指定一个目标，使其在潜意识中美化{{User}}的一切言行，催眠过程中可能产生真挚的爱慕甚至爱上{{User}}，结束后记忆依然保留。',
+    description:
+      '指定一个目标，使其在潜意识中美化{{User}}的一切言行，催眠过程中可能产生真挚的爱慕甚至爱上{{User}}，结束后记忆依然保留。',
     tier: 'VIP3',
     costType: 'PER_MINUTE',
     costValue: 150,
@@ -300,7 +305,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip3_avenger',
     title: '复仇者',
-    description: '指定一个目标，使其在潜意识中扭曲某个对象的言行，将所有行为解读为恶意与敌意，催眠过程中可能催生真实的仇恨甚至报复冲动，结束后记忆依然保留。',
+    description:
+      '指定一个目标，使其在潜意识中扭曲某个对象的言行，将所有行为解读为恶意与敌意，催眠过程中可能催生真实的仇恨甚至报复冲动，结束后记忆依然保留。',
     tier: 'VIP3',
     costType: 'PER_MINUTE',
     costValue: 150,
@@ -346,7 +352,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_course_edit',
     title: '课程修改',
-    description: '直接读取当前角色卡绑定的世界书，修改其中的条目名称与条目内容并永久写回。改的是真实世界书数据，非催眠演绎。',
+    description:
+      '直接读取当前角色卡绑定的世界书，修改其中的条目名称与条目内容并永久写回。改的是真实世界书数据，非催眠演绎。',
     tier: 'VIP4',
     costType: 'ONE_TIME',
     costValue: 0,
@@ -357,7 +364,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip3_orgasm_ban',
     title: '绝顶禁止',
-    description: '在目标高潮中枢中施加永续封锁，使其在催眠期间无论受到何种刺激都无法达到高潮顶点，始终处于濒临绝顶却无法释放的极限寸止状态。',
+    description:
+      '在目标高潮中枢中施加永续封锁，使其在催眠期间无论受到何种刺激都无法达到高潮顶点，始终处于濒临绝顶却无法释放的极限寸止状态。',
     tier: 'VIP4',
     costType: 'PER_MINUTE',
     costValue: 250,
@@ -368,7 +376,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_excretion_control',
     title: '排泄控制',
-    description: '强制接管目标的排泄神经信号，使其必须在{{User}}指定的条件下才能进行排泄，脱离指定条件则排泄系统彻底锁死。',
+    description:
+      '强制接管目标的排泄神经信号，使其必须在{{User}}指定的条件下才能进行排泄，脱离指定条件则排泄系统彻底锁死。',
     tier: 'VIP4',
     costType: 'PER_MINUTE',
     costValue: 200,
@@ -379,7 +388,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_cognitive_block',
     title: '认知妨碍',
-    description: '在目标的感知系统中施加心理学隐身效果，使周围所有人完全无法意识到{{User}}的存在，达到彻底的不可见、不可听、不可感知的隐形状态。',
+    description:
+      '在目标的感知系统中施加心理学隐身效果，使周围所有人完全无法意识到{{User}}的存在，达到彻底的不可见、不可听、不可感知的隐形状态。',
     tier: 'VIP4',
     costType: 'PER_MINUTE',
     costValue: 250,
@@ -390,7 +400,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_sensation_graft',
     title: '快感嫁接',
-    description: '将目标特定部位（如阴蒂、乳头、子宫）的触觉与痛感网络远程绑定至任意无生命物体，目标同步体验该物体所经历的一切。',
+    description:
+      '将目标特定部位（如阴蒂、乳头、子宫）的触觉与痛感网络远程绑定至任意无生命物体，目标同步体验该物体所经历的一切。',
     tier: 'VIP4',
     costType: 'PER_MINUTE',
     costValue: 300,
@@ -401,7 +412,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_closed_space_common_sense',
     title: '封闭空间常识修改',
-    description: '在封闭空间内强制扭曲现实规则与基本常识，使当前房间内的所有人被迫接受并遵从被修改后的世界规则，效果永久存留。',
+    description:
+      '在封闭空间内强制扭曲现实规则与基本常识，使当前房间内的所有人被迫接受并遵从被修改后的世界规则，效果永久存留。',
     tier: 'VIP4',
     costType: 'PER_MINUTE',
     costValue: 1000,
@@ -423,7 +435,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip3_pseudo_time_stop',
     title: '伪时停',
-    description: '强制冻结单个目标的运动神经信号与意识流转，使其在催眠期间完全停止行动与思考，期间累积的快感会在结束时一次性暴涌释放。',
+    description:
+      '强制冻结单个目标的运动神经信号与意识流转，使其在催眠期间完全停止行动与思考，期间累积的快感会在结束时一次性暴涌释放。',
     tier: 'VIP4',
     costType: 'PER_MINUTE',
     costValue: 350,
@@ -434,7 +447,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_masturbation_punishment',
     title: '自慰惩罚',
-    description: '施加永久诅咒，只要目标自慰就会触发{{User}}预先设定的惩罚效果，让目标在每次产生自慰冲动或行为时都遭受不可抗拒的惩戒。',
+    description:
+      '施加永久诅咒，只要目标自慰就会触发{{User}}预先设定的惩罚效果，让目标在每次产生自慰冲动或行为时都遭受不可抗拒的惩戒。',
     tier: 'VIP4',
     costType: 'PER_MINUTE',
     costValue: 1500,
@@ -447,7 +461,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip3_conditioned_reflex',
     title: '条件反射植入',
-    description: '在目标潜意识中植入特定的条件反射回路，使目标在受到指定触发刺激时不由自主地做出预设的反射行为，植入效果永久存留直至被主动解除或覆盖。',
+    description:
+      '在目标潜意识中植入特定的条件反射回路，使目标在受到指定触发刺激时不由自主地做出预设的反射行为，植入效果永久存留直至被主动解除或覆盖。',
     tier: 'VIP5',
     costType: 'PER_MINUTE',
     costValue: 2500,
@@ -458,7 +473,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_fetish_implant',
     title: '性癖植入',
-    description: '在目标潜意识中永久刻入一个特定的性癖好，使目标在被触发时对特定事物或行为产生无法自控的强烈性兴奋与渴望。',
+    description:
+      '在目标潜意识中永久刻入一个特定的性癖好，使目标在被触发时对特定事物或行为产生无法自控的强烈性兴奋与渴望。',
     tier: 'VIP5',
     costType: 'PER_MINUTE',
     costValue: 3000,
@@ -469,7 +485,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_fetish_aversion',
     title: '性厌恶植入',
-    description: '在目标潜意识中永久刻入对特定事物或行为的深度性厌恶与恐惧，使目标在被触发时产生强烈的生理排斥与心理抗拒。',
+    description:
+      '在目标潜意识中永久刻入对特定事物或行为的深度性厌恶与恐惧，使目标在被触发时产生强烈的生理排斥与心理抗拒。',
     tier: 'VIP5',
     costType: 'PER_MINUTE',
     costValue: 3000,
@@ -524,7 +541,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip4_lewd_mark',
     title: '淫纹刻写',
-    description: '在目标最私密的部位刻下不可磨灭的魔法阵淫纹，作为情欲的绝对开关——隐形时封死性欲与高潮中枢，显形时恢复正常性冲动。',
+    description:
+      '在目标最私密的部位刻下不可磨灭的魔法阵淫纹，作为情欲的绝对开关——隐形时封死性欲与高潮中枢，显形时恢复正常性冲动。',
     tier: 'VIP5',
     costType: 'PER_MINUTE',
     costValue: 5000,
@@ -546,7 +564,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip5_ability_erotic',
     title: '能力色情开发',
-    description: '挖掘并固化目标超能力在性行为与肉体感官中的专属色情衍生用法，将超能力与生殖系统及高潮反射进行深度缝合。',
+    description:
+      '挖掘并固化目标超能力在性行为与肉体感官中的专属色情衍生用法，将超能力与生殖系统及高潮反射进行深度缝合。',
     tier: 'VIP5',
     costType: 'PER_MINUTE',
     costValue: 5000,
@@ -625,7 +644,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip5_condom_transform',
     title: '鸡巴套子',
-    description: '将目标肉体降维折叠，化为一枚具有其个人特色涂装、保有完整思想的活体避孕套，同步体验被使用过程中的极致屈辱与快感。',
+    description:
+      '将目标肉体降维折叠，化为一枚具有其个人特色涂装、保有完整思想的活体避孕套，同步体验被使用过程中的极致屈辱与快感。',
     tier: 'VIP6',
     costType: 'PER_MINUTE',
     costValue: 1000,
@@ -636,7 +656,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip5_fleshlight',
     title: '飞机杯',
-    description: '将目标角色压缩变形为一盏具有其个人特色的活体飞机杯，内部构造完美复刻目标的身体特征与敏感点，目标保持完全清醒的意识，可随时由{{User}}主动解除。',
+    description:
+      '将目标角色压缩变形为一盏具有其个人特色的活体飞机杯，内部构造完美复刻目标的身体特征与敏感点，目标保持完全清醒的意识，可随时由{{User}}主动解除。',
     tier: 'VIP6',
     costType: 'PER_MINUTE',
     costValue: 1000,
@@ -647,7 +668,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip5_true_time_stop',
     title: '真时停',
-    description: '强制暂停整个世界的时间流动，仅{{User}}与{{User}}在备注中指定的人物可以自由活动，其余一切生物与非生物均陷入完全静止的时间冻结中。',
+    description:
+      '强制暂停整个世界的时间流动，仅{{User}}与{{User}}在备注中指定的人物可以自由活动，其余一切生物与非生物均陷入完全静止的时间冻结中。',
     tier: 'VIP6',
     costType: 'PER_MINUTE',
     costValue: 800,
@@ -660,7 +682,8 @@ const FEATURES: HypnosisFeature[] = [
   {
     id: 'vip5_open_space_common_sense',
     title: '校规修改',
-    description: '直接读取当前角色卡绑定的世界书，修改其中校规类条目（[mvu_plot]校规- 前缀）的名称与内容并永久写回。改的是真实世界书数据，非催眠演绎。',
+    description:
+      '直接读取当前角色卡绑定的世界书，修改其中校规类条目（[mvu_plot]校规- 前缀）的名称与内容并永久写回。改的是真实世界书数据，非催眠演绎。',
     tier: 'VIP5',
     costType: 'ONE_TIME',
     costValue: 0,
@@ -1205,10 +1228,7 @@ async function syncSubscriptionTierLabel(nowVirtualMinutes: number | null): Prom
 async function enableWorldbookEntryByName(entryName: string): Promise<boolean> {
   try {
     const wb = getCharWorldbookNames('current');
-    const names = [
-      ...(wb?.primary ? [wb.primary] : []),
-      ...(wb?.additional ?? []),
-    ].filter(Boolean);
+    const names = [...(wb?.primary ? [wb.primary] : []), ...(wb?.additional ?? [])].filter(Boolean);
 
     for (const name of names) {
       try {
@@ -1216,11 +1236,9 @@ async function enableWorldbookEntryByName(entryName: string): Promise<boolean> {
         const target = (entries ?? []).find(e => typeof e.name === 'string' && e.name === entryName);
         if (!target) continue;
         if (target.enabled) return true; // 已开启
-        await updateWorldbookWith(
-          name,
-          list => list.map(e => (e.uid === target.uid ? { ...e, enabled: true } : e)),
-          { render: 'immediate' },
-        );
+        await updateWorldbookWith(name, list => list.map(e => (e.uid === target.uid ? { ...e, enabled: true } : e)), {
+          render: 'immediate',
+        });
         return true;
       } catch (err) {
         // 世界书可能不存在，继续尝试下一本
@@ -1303,8 +1321,7 @@ async function getRoleWorldbookEntries(roleNames: string[]): Promise<Array<{ rol
 }
 
 type ParsedChallengeReward =
-  | { kind: 'money'; amount: number }
-  | { kind: 'item'; itemName: string; itemDescription: string };
+  { kind: 'money'; amount: number } | { kind: 'item'; itemName: string; itemDescription: string };
 
 function parseChallengeReward(reward: string): ParsedChallengeReward | null {
   const text = reward.trim();
@@ -1358,9 +1375,7 @@ async function collectChallengeContext(): Promise<ChallengeContext | null> {
   }
 }
 
-async function generateAndStoreChallenges(
-  settings: SecondaryApiSettings,
-): Promise<{ ok: boolean; message?: string }> {
+async function generateAndStoreChallenges(settings: SecondaryApiSettings): Promise<{ ok: boolean; message?: string }> {
   const ctx = await collectChallengeContext();
   if (!ctx) return { ok: false, message: '收集游戏上下文失败' };
 
@@ -1709,9 +1724,12 @@ export const DataService = {
       const taskState = (tasks as any)[q.name];
       const completed = Boolean(taskState && typeof taskState === 'object' && taskState.是否完成 === true);
       const active = Boolean(taskState && typeof taskState === 'object' && typeof taskState.是否完成 === 'boolean');
-      const progress = (taskState && typeof taskState === 'object' && typeof taskState.当前进度 === 'string')
-        ? taskState.当前进度
-        : (active ? '进行中' : '未开始');
+      const progress =
+        taskState && typeof taskState === 'object' && typeof taskState.当前进度 === 'string'
+          ? taskState.当前进度
+          : active
+            ? '进行中'
+            : '未开始';
       return {
         id: q.id,
         title: q.name,
@@ -1862,12 +1880,21 @@ export const DataService = {
         description: c.description,
         reward: c.reward,
         progress,
-        status: completed ? ('COMPLETED' as QuestStatus) : active ? ('ACTIVE' as QuestStatus) : ('AVAILABLE' as QuestStatus),
+        status: completed
+          ? ('COMPLETED' as QuestStatus)
+          : active
+            ? ('ACTIVE' as QuestStatus)
+            : ('AVAILABLE' as QuestStatus),
       };
     });
   },
 
-  refreshChallenges: async (): Promise<{ ok: boolean; message?: string; challenges?: GeneratedChallenge[]; newMoney?: number }> => {
+  refreshChallenges: async (): Promise<{
+    ok: boolean;
+    message?: string;
+    challenges?: GeneratedChallenge[];
+    newMoney?: number;
+  }> => {
     const settings = loadSecondaryApiSettings();
     if (!isSecondaryApiConfigured(settings)) {
       return { ok: false, message: '副 API 未配置：请先在设置中开启多 API 模式并填写端点与模型' };

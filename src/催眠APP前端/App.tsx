@@ -11,7 +11,17 @@ import ForumApp from './components/ForumApp';
 import { DataService } from './services/dataService';
 import { waitForMvuReady } from './services/mvuBridge';
 import { UserResources, AppMode } from './types';
-import { Activity, Calendar, HelpCircle, MessageSquare, Package, Settings, ShoppingBag, Trophy, UserPlus } from 'lucide-react';
+import {
+  Activity,
+  Calendar,
+  HelpCircle,
+  MessageSquare,
+  Package,
+  Settings,
+  ShoppingBag,
+  Trophy,
+  UserPlus,
+} from 'lucide-react';
 
 const FALLBACK_USER_DATA: UserResources = {
   mcEnergy: 25,
@@ -203,7 +213,9 @@ const App = () => {
           <AchievementApp userData={userData} onUpdateUser={updateUser} onBack={() => setCurrentApp(AppMode.HOME)} />
         );
       case AppMode.SHOP:
-        return <HypnosisShop userData={userData} onUpdateUser={updateUser} onBack={() => setCurrentApp(AppMode.HOME)} />;
+        return (
+          <HypnosisShop userData={userData} onUpdateUser={updateUser} onBack={() => setCurrentApp(AppMode.HOME)} />
+        );
       case AppMode.BACKPACK:
         return <HypnosisBackpack onBack={() => setCurrentApp(AppMode.HOME)} />;
       case AppMode.SETTINGS:

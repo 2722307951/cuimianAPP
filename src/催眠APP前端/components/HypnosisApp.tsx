@@ -370,7 +370,9 @@ const SCHOOL_RULE_FIELDS: EditorField[] = [
 // 把世界书条目 content（多行「- label：value」）解析为字段 -> 值 的映射
 const parseFieldsFromContent = (content: string, fields: EditorField[]): Record<string, string> => {
   const result: Record<string, string> = {};
-  fields.forEach(f => { result[f.key] = ''; });
+  fields.forEach(f => {
+    result[f.key] = '';
+  });
   if (!content) return result;
   const lines = content.split('\n');
   for (const line of lines) {
@@ -443,10 +445,7 @@ const WorldBookEntryEditor: React.FC<WorldBookEditorProps> = ({
         const wb = await getCharWorldbookNames('current');
         if (stopped) return;
         const primaryName = wb?.primary ?? '';
-        const names = [
-          ...(primaryName ? [primaryName] : []),
-          ...(wb?.additional ?? []),
-        ].filter(Boolean);
+        const names = [...(primaryName ? [primaryName] : []), ...(wb?.additional ?? [])].filter(Boolean);
         setWorldbookNames(names);
         // 默认读取当前挂载的主世界书
         if (primaryName && selectedName !== primaryName) {
@@ -615,17 +614,11 @@ const WorldBookEntryEditor: React.FC<WorldBookEditorProps> = ({
   };
 
   if (loadingNames) {
-    return (
-      <div className="mt-2 text-xs text-gray-400 animate-pulse">正在读取当前角色卡绑定的世界书…</div>
-    );
+    return <div className="mt-2 text-xs text-gray-400 animate-pulse">正在读取当前角色卡绑定的世界书…</div>;
   }
 
   if (worldbookNames.length === 0) {
-    return (
-      <div className="mt-2 text-xs text-amber-300/80">
-        当前角色卡未绑定任何世界书，无法编辑条目。
-      </div>
-    );
+    return <div className="mt-2 text-xs text-amber-300/80">当前角色卡未绑定任何世界书，无法编辑条目。</div>;
   }
 
   return (
@@ -756,7 +749,9 @@ const WorldBookEntryEditor: React.FC<WorldBookEditorProps> = ({
       )}
 
       <p className="text-[10px] text-gray-500 leading-relaxed">
-        仅显示{itemLabel}类条目（前缀 {namePrefix}），展示与编辑时已隐藏该前缀。内容按固定字段格式写回（- 字段名：值），{nameField.label}会自动拼到前缀之后作为条目名。任一字段为空则无法保存；保存成功扣除 {costPerSave} 催眠能量，并把修改前后对比与规则写入玩家输入框。修改的是真实世界书数据，保存后立即生效。
+        仅显示{itemLabel}类条目（前缀 {namePrefix}），展示与编辑时已隐藏该前缀。内容按固定字段格式写回（- 字段名：值），
+        {nameField.label}会自动拼到前缀之后作为条目名。任一字段为空则无法保存；保存成功扣除 {costPerSave}{' '}
+        催眠能量，并把修改前后对比与规则写入玩家输入框。修改的是真实世界书数据，保存后立即生效。
       </p>
     </div>
   );
@@ -1003,16 +998,14 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
 
   const getFeatureNumericConfig = (
     feature: HypnosisFeature,
-  ):
-    | {
-        label: string;
-        unit: string;
-        min: number;
-        max: number;
-        step?: number;
-        hint?: string;
-      }
-    | null => {
+  ): {
+    label: string;
+    unit: string;
+    min: number;
+    max: number;
+    step?: number;
+    hint?: string;
+  } | null => {
     switch (feature.id) {
       default:
         return null;
@@ -1357,10 +1350,7 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
   );
   const templateTargetMissing = Boolean(
     templateFeatures.some(
-      f =>
-        f.isEnabled &&
-        roleNames.length > 0 &&
-        !(f.userTarget && f.userTarget.trim() && f.userTarget !== '暂无对象'),
+      f => f.isEnabled && roleNames.length > 0 && !(f.userTarget && f.userTarget.trim() && f.userTarget !== '暂无对象'),
     ),
   );
 
@@ -1492,9 +1482,7 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
       ].includes(featureId);
 
     // 互斥：开启某功能时，自动关闭其它所有已开启的功能（同一时间只能启用一个）
-    const othersToClose = nextEnabled
-      ? features.filter(f => f.id !== id && f.isEnabled).map(f => f.id)
-      : [];
+    const othersToClose = nextEnabled ? features.filter(f => f.id !== id && f.isEnabled).map(f => f.id) : [];
 
     setFeatures(prev =>
       prev.map(f => {
@@ -1615,9 +1603,7 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
     setSessionEndVirtualMinutes(endVirtualMinutes);
     setSessionEndAtMs(endAtMs);
 
-    const enabledFeatures = features
-      .filter(f => f.isEnabled && canUseEnabledFeature(f))
-      .map(f => f);
+    const enabledFeatures = features.filter(f => f.isEnabled && canUseEnabledFeature(f)).map(f => f);
 
     // Deduct resources BEFORE sending message (the iframe may reload after chat update)
     await MvuBridge.appendThisTurnAppOperationLog(`启动催眠 ${duration}分钟（-${totalEnergyCost} MC）`);
@@ -1764,31 +1750,19 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
         const rounds = clampInt(feature.userRounds, 1, 1, 5);
         const delta = clampInt(feature.userNumber, 1, 1, 100);
         const modeLabel =
-          feature.userMode === '听觉'
-            ? '听觉 +300'
-            : feature.userMode === '触觉'
-              ? '触觉 +100'
-              : '视觉 +0';
+          feature.userMode === '听觉' ? '听觉 +300' : feature.userMode === '触觉' ? '触觉 +100' : '视觉 +0';
         return `${delta}点 x ${rounds}轮，${modeLabel}`;
       }
       if (feature.id === 'vip2_pleasure') {
         const rounds = clampInt(feature.userRounds, 1, 1, 5);
         const intensity = clampInt(feature.userNumber, 1, 1, 100);
         const modeLabel =
-          feature.userMode === '听觉'
-            ? '听觉 +300'
-            : feature.userMode === '触觉'
-              ? '触觉 +100'
-              : '视觉 +0';
+          feature.userMode === '听觉' ? '听觉 +300' : feature.userMode === '触觉' ? '触觉 +100' : '视觉 +0';
         return `${intensity}级 x ${rounds}轮，${modeLabel}`;
       }
       if (feature.id === 'vip1_memory_erase') {
         const modeLabel =
-          feature.userMode === '听觉'
-            ? '听觉 +300'
-            : feature.userMode === '触觉'
-              ? '触觉 +100'
-              : '视觉 +0';
+          feature.userMode === '听觉' ? '听觉 +300' : feature.userMode === '触觉' ? '触觉 +100' : '视觉 +0';
         return `启用一次 ${feature.costValue} MC，${modeLabel}`;
       }
       if (
@@ -1819,7 +1793,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
         feature.id === 'vip4_excretion_control' ||
         feature.id === 'vip4_control_body_keep_conscious' ||
         feature.id === 'vip4_control_body_no_conscious' ||
-        feature.id === 'vip4_cognitive_block' || feature.id === 'vip4_temp_personality' || feature.id === 'vip4_sensation_graft' ||
+        feature.id === 'vip4_cognitive_block' ||
+        feature.id === 'vip4_temp_personality' ||
+        feature.id === 'vip4_sensation_graft' ||
         feature.id === 'vip5_condom_transform' ||
         feature.id === 'vip5_forced_insertion' ||
         feature.id === 'vip5_fleshlight' ||
@@ -1828,11 +1804,7 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
         const rounds = clampInt(feature.userRounds, 1, 1, 5);
         const modeExtra = feature.userMode === '听觉' ? 300 : feature.userMode === '触觉' ? 100 : 0;
         const modeLabel =
-          feature.userMode === '听觉'
-            ? '听觉 +300'
-            : feature.userMode === '触觉'
-              ? '触觉 +100'
-              : '视觉 +0';
+          feature.userMode === '听觉' ? '听觉 +300' : feature.userMode === '触觉' ? '触觉 +100' : '视觉 +0';
         return `基础 ${feature.costValue} MC x ${rounds}轮，${modeLabel}`;
       }
       if (feature.id === 'vip4_closed_space_common_sense') return `每人每分钟: ${feature.costValue} ${currency}`;
@@ -1930,7 +1902,7 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                         购买 {purchasePriceEnergy} MC
                       </button>
                     )}
-                    {(feature.id === 'vip4_course_edit' || feature.id === 'vip5_open_space_common_sense') ? (
+                    {feature.id === 'vip4_course_edit' || feature.id === 'vip5_open_space_common_sense' ? (
                       <button
                         onClick={e => {
                           e.stopPropagation();
@@ -2022,7 +1994,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                       feature.id === 'vip4_excretion_control' ||
                       feature.id === 'vip4_control_body_keep_conscious' ||
                       feature.id === 'vip4_control_body_no_conscious' ||
-                      feature.id === 'vip4_cognitive_block' || feature.id === 'vip4_temp_personality' || feature.id === 'vip4_sensation_graft' ||
+                      feature.id === 'vip4_cognitive_block' ||
+                      feature.id === 'vip4_temp_personality' ||
+                      feature.id === 'vip4_sensation_graft' ||
                       feature.id === 'vip5_condom_transform' ||
                       feature.id === 'vip5_forced_insertion' ||
                       feature.id === 'vip5_fleshlight' ||
@@ -2040,7 +2014,8 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                                 { value: 5, label: 'X5' },
                               ].map(round => {
                                 const roundValue = round.value;
-                                const effectiveRounds = feature.id === 'vip1_memory_erase' ? 1 : (feature.userRounds ?? 1);
+                                const effectiveRounds =
+                                  feature.id === 'vip1_memory_erase' ? 1 : (feature.userRounds ?? 1);
                                 const active = effectiveRounds === roundValue;
                                 const disabled = feature.id === 'vip1_memory_erase' && roundValue !== 1;
                                 return (
@@ -2093,11 +2068,13 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                           <div className="text-[10px] text-gray-400 mb-1">催眠模式选择</div>
                           <div className="flex items-center gap-2">
                             <div className="flex gap-1.5">
-                              {([
-                                { value: '视觉', extra: 0 },
-                                { value: '触觉', extra: 100 },
-                                { value: '听觉', extra: 300 },
-                              ] as const).map(option => {
+                              {(
+                                [
+                                  { value: '视觉', extra: 0 },
+                                  { value: '触觉', extra: 100 },
+                                  { value: '听觉', extra: 300 },
+                                ] as const
+                              ).map(option => {
                                 const active = (feature.userMode ?? '视觉') === option.value;
                                 return (
                                   <button
@@ -2118,7 +2095,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                             </div>
                             <div className="ml-auto rounded-lg border border-amber-400/20 bg-amber-500/10 px-3 py-1.5 flex items-center gap-2 shrink-0">
                               <span className="text-[11px] text-amber-100">总消耗</span>
-                              <span className="text-sm font-bold text-amber-300 tabular-nums">{getFeatureCost(feature)}</span>
+                              <span className="text-sm font-bold text-amber-300 tabular-nums">
+                                {getFeatureCost(feature)}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -2252,11 +2231,13 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                           <div className="text-[10px] text-gray-400 mb-1">催眠模式选择</div>
                           <div className="flex items-center gap-2">
                             <div className="flex gap-1.5">
-                              {([
-                                { value: '视觉', extra: 0 },
-                                { value: '触觉', extra: 100 },
-                                { value: '听觉', extra: 300 },
-                              ] as const).map(option => {
+                              {(
+                                [
+                                  { value: '视觉', extra: 0 },
+                                  { value: '触觉', extra: 100 },
+                                  { value: '听觉', extra: 300 },
+                                ] as const
+                              ).map(option => {
                                 const active = (feature.userMode ?? '视觉') === option.value;
                                 return (
                                   <button
@@ -2277,7 +2258,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                             </div>
                             <div className="ml-auto rounded-lg border border-amber-400/20 bg-amber-500/10 px-3 py-1.5 flex items-center gap-2 shrink-0">
                               <span className="text-[11px] text-amber-100">总消耗</span>
-                              <span className="text-sm font-bold text-amber-300 tabular-nums">{getFeatureCost(feature)}</span>
+                              <span className="text-sm font-bold text-amber-300 tabular-nums">
+                                {getFeatureCost(feature)}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -2394,11 +2377,13 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                           <div className="text-[10px] text-gray-400 mb-1">催眠模式选择</div>
                           <div className="flex items-center gap-2">
                             <div className="flex gap-1.5">
-                              {([
-                                { value: '视觉', extra: 0 },
-                                { value: '触觉', extra: 100 },
-                                { value: '听觉', extra: 300 },
-                              ] as const).map(option => {
+                              {(
+                                [
+                                  { value: '视觉', extra: 0 },
+                                  { value: '触觉', extra: 100 },
+                                  { value: '听觉', extra: 300 },
+                                ] as const
+                              ).map(option => {
                                 const active = (feature.userMode ?? '视觉') === option.value;
                                 return (
                                   <button
@@ -2419,7 +2404,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                             </div>
                             <div className="ml-auto rounded-lg border border-amber-400/20 bg-amber-500/10 px-3 py-1.5 flex items-center gap-2 shrink-0">
                               <span className="text-[11px] text-amber-100">总消耗</span>
-                              <span className="text-sm font-bold text-amber-300 tabular-nums">{getFeatureCost(feature)}</span>
+                              <span className="text-sm font-bold text-amber-300 tabular-nums">
+                                {getFeatureCost(feature)}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -2489,11 +2476,13 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                           <div className="text-[10px] text-gray-400 mb-1">催眠模式选择</div>
                           <div className="flex items-center gap-2">
                             <div className="flex gap-1.5">
-                              {([
-                                { value: '视觉', extra: 0 },
-                                { value: '触觉', extra: 100 },
-                                { value: '听觉', extra: 300 },
-                              ] as const).map(option => {
+                              {(
+                                [
+                                  { value: '视觉', extra: 0 },
+                                  { value: '触觉', extra: 100 },
+                                  { value: '听觉', extra: 300 },
+                                ] as const
+                              ).map(option => {
                                 const active = (feature.userMode ?? '视觉') === option.value;
                                 return (
                                   <button
@@ -2514,7 +2503,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                             </div>
                             <div className="ml-auto rounded-lg border border-amber-400/20 bg-amber-500/10 px-3 py-1.5 flex items-center gap-2 shrink-0">
                               <span className="text-[11px] text-amber-100">总消耗</span>
-                              <span className="text-sm font-bold text-amber-300 tabular-nums">{getFeatureCost(feature)}</span>
+                              <span className="text-sm font-bold text-amber-300 tabular-nums">
+                                {getFeatureCost(feature)}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -2565,11 +2556,13 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                           <div className="text-[10px] text-gray-400 mb-1">催眠模式选择</div>
                           <div className="flex items-center gap-2">
                             <div className="flex gap-1.5">
-                              {([
-                                { value: '视觉', extra: 0 },
-                                { value: '触觉', extra: 100 },
-                                { value: '听觉', extra: 300 },
-                              ] as const).map(option => {
+                              {(
+                                [
+                                  { value: '视觉', extra: 0 },
+                                  { value: '触觉', extra: 100 },
+                                  { value: '听觉', extra: 300 },
+                                ] as const
+                              ).map(option => {
                                 const active = (feature.userMode ?? '视觉') === option.value;
                                 return (
                                   <button
@@ -2590,7 +2583,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                             </div>
                             <div className="ml-auto rounded-lg border border-amber-400/20 bg-amber-500/10 px-3 py-1.5 flex items-center gap-2 shrink-0">
                               <span className="text-[11px] text-amber-100">总消耗</span>
-                              <span className="text-sm font-bold text-amber-300 tabular-nums">{getFeatureCost(feature)}</span>
+                              <span className="text-sm font-bold text-amber-300 tabular-nums">
+                                {getFeatureCost(feature)}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -2603,7 +2598,24 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                       </div>
                     )}
 
-                    {['vip4_breast_remodeling', 'vip4_genital_remodeling', 'vip4_race_remodeling', 'vip4_butt_remodeling', 'vip4_urethra_remodeling', 'vip4_exclusive_access', 'vip4_lewd_mark', 'vip4_fetish_implant', 'vip4_fetish_aversion', 'vip4_masturbation_punishment', 'vip5_ability_erotic', 'vip5_moral_reform', 'vip5_permanent', 'vip5_permanent_false_memory', 'vip5_permanent_personality', 'vip5_personality_kill'].includes(feature.id) && (
+                    {[
+                      'vip4_breast_remodeling',
+                      'vip4_genital_remodeling',
+                      'vip4_race_remodeling',
+                      'vip4_butt_remodeling',
+                      'vip4_urethra_remodeling',
+                      'vip4_exclusive_access',
+                      'vip4_lewd_mark',
+                      'vip4_fetish_implant',
+                      'vip4_fetish_aversion',
+                      'vip4_masturbation_punishment',
+                      'vip5_ability_erotic',
+                      'vip5_moral_reform',
+                      'vip5_permanent',
+                      'vip5_permanent_false_memory',
+                      'vip5_permanent_personality',
+                      'vip5_personality_kill',
+                    ].includes(feature.id) && (
                       <div className="mt-3 space-y-3">
                         <div className="flex items-center gap-3">
                           <div>
@@ -2641,11 +2653,13 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                           <div className="text-[10px] text-gray-400 mb-1">催眠模式选择</div>
                           <div className="flex items-center gap-2">
                             <div className="flex gap-1.5">
-                              {([
-                                { value: '视觉', extra: 0 },
-                                { value: '触觉', extra: 100 },
-                                { value: '听觉', extra: 300 },
-                              ] as const).map(option => {
+                              {(
+                                [
+                                  { value: '视觉', extra: 0 },
+                                  { value: '触觉', extra: 100 },
+                                  { value: '听觉', extra: 300 },
+                                ] as const
+                              ).map(option => {
                                 const active = (feature.userMode ?? '视觉') === option.value;
                                 return (
                                   <button
@@ -2666,7 +2680,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                             </div>
                             <div className="ml-auto rounded-lg border border-amber-400/20 bg-amber-500/10 px-3 py-1.5 flex items-center gap-2 shrink-0">
                               <span className="text-[11px] text-amber-100">总消耗</span>
-                              <span className="text-sm font-bold text-amber-300 tabular-nums">{getFeatureCost(feature)}</span>
+                              <span className="text-sm font-bold text-amber-300 tabular-nums">
+                                {getFeatureCost(feature)}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -2702,11 +2718,13 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                           <div className="text-[10px] text-gray-400 mb-1">催眠模式选择</div>
                           <div className="flex items-center gap-2">
                             <div className="flex gap-1.5">
-                              {([
-                                { value: '视觉', extra: 0 },
-                                { value: '触觉', extra: 100 },
-                                { value: '听觉', extra: 300 },
-                              ] as const).map(option => {
+                              {(
+                                [
+                                  { value: '视觉', extra: 0 },
+                                  { value: '触觉', extra: 100 },
+                                  { value: '听觉', extra: 300 },
+                                ] as const
+                              ).map(option => {
                                 const active = (feature.userMode ?? '视觉') === option.value;
                                 return (
                                   <button
@@ -2727,7 +2745,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                             </div>
                             <div className="ml-auto rounded-lg border border-amber-400/20 bg-amber-500/10 px-3 py-1.5 flex items-center gap-2 shrink-0">
                               <span className="text-[11px] text-amber-100">总消耗</span>
-                              <span className="text-sm font-bold text-amber-300 tabular-nums">{getFeatureCost(feature)}</span>
+                              <span className="text-sm font-bold text-amber-300 tabular-nums">
+                                {getFeatureCost(feature)}
+                              </span>
                             </div>
                           </div>
                         </div>
@@ -2772,62 +2792,84 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                       feature.id !== 'vip5_permanent_personality' &&
                       feature.id !== 'vip5_personality_kill' &&
                       (() => {
-                      const cfg = getFeatureNumericConfig(feature);
-                      if (!cfg) return null;
-                      const currentRaw = feature.userNumber;
-                      const current = typeof currentRaw === 'number' && Number.isFinite(currentRaw) ? currentRaw : '';
-                      const computed = getFeatureCost(feature);
-                      const currencyLabel = 'MC';
-                      return (
-                        <div className="mt-3 grid grid-cols-2 gap-2 items-end">
-                          <label className="col-span-1">
-                            <div className="text-[10px] text-gray-400 mb-1 flex items-center justify-between gap-2">
-                              <span className="truncate">
-                                {cfg.label}
-                                {cfg.unit ? `（${cfg.unit}）` : ''}
-                              </span>
-                              {cfg.hint && <span className="text-[10px] text-gray-500 truncate">{cfg.hint}</span>}
-                            </div>
-                            <input
-                              type="number"
-                              inputMode="numeric"
-                              min={cfg.min}
-                              max={cfg.max}
-                              step={cfg.step ?? 1}
-                              value={current}
-                              onChange={e => {
-                                const raw = e.target.value;
-                                if (!raw) {
-                                  updateFeatureNumber(feature.id, null);
-                                  return;
-                                }
-                                const next = Number(raw);
-                                if (!Number.isFinite(next)) return;
-                                const clamped = Math.max(cfg.min, Math.min(cfg.max, Math.floor(next)));
-                                updateFeatureNumber(feature.id, clamped);
-                              }}
-                              className="w-full bg-black/30 border border-white/10 rounded-lg px-3 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-pink-500/50 transition-colors"
-                              placeholder={`${cfg.min}-${cfg.max}`}
-                            />
-                          </label>
-                          <div className="col-span-1 text-right">
-                            <div className="text-[10px] text-gray-500">自动计算费用</div>
-                            <div className="text-xs font-bold text-amber-300 tabular-nums">
-                              {computed} {currencyLabel}
+                        const cfg = getFeatureNumericConfig(feature);
+                        if (!cfg) return null;
+                        const currentRaw = feature.userNumber;
+                        const current = typeof currentRaw === 'number' && Number.isFinite(currentRaw) ? currentRaw : '';
+                        const computed = getFeatureCost(feature);
+                        const currencyLabel = 'MC';
+                        return (
+                          <div className="mt-3 grid grid-cols-2 gap-2 items-end">
+                            <label className="col-span-1">
+                              <div className="text-[10px] text-gray-400 mb-1 flex items-center justify-between gap-2">
+                                <span className="truncate">
+                                  {cfg.label}
+                                  {cfg.unit ? `（${cfg.unit}）` : ''}
+                                </span>
+                                {cfg.hint && <span className="text-[10px] text-gray-500 truncate">{cfg.hint}</span>}
+                              </div>
+                              <input
+                                type="number"
+                                inputMode="numeric"
+                                min={cfg.min}
+                                max={cfg.max}
+                                step={cfg.step ?? 1}
+                                value={current}
+                                onChange={e => {
+                                  const raw = e.target.value;
+                                  if (!raw) {
+                                    updateFeatureNumber(feature.id, null);
+                                    return;
+                                  }
+                                  const next = Number(raw);
+                                  if (!Number.isFinite(next)) return;
+                                  const clamped = Math.max(cfg.min, Math.min(cfg.max, Math.floor(next)));
+                                  updateFeatureNumber(feature.id, clamped);
+                                }}
+                                className="w-full bg-black/30 border border-white/10 rounded-lg px-3 py-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-pink-500/50 transition-colors"
+                                placeholder={`${cfg.min}-${cfg.max}`}
+                              />
+                            </label>
+                            <div className="col-span-1 text-right">
+                              <div className="text-[10px] text-gray-500">自动计算费用</div>
+                              <div className="text-xs font-bold text-amber-300 tabular-nums">
+                                {computed} {currencyLabel}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    })()}
+                        );
+                      })()}
 
-                    {feature.id !== 'vip4_course_edit' && feature.id !== 'vip5_open_space_common_sense' && feature.id !== 'vip1_temp_sensitivity' && feature.id !== 'vip2_pleasure' && feature.id !== 'vip3_forced' && feature.id !== 'vip3_conditioned_reflex' && feature.id !== 'vip4_breast_remodeling' && feature.id !== 'vip4_genital_remodeling' && feature.id !== 'vip4_race_remodeling' && feature.id !== 'vip4_butt_remodeling' && feature.id !== 'vip4_urethra_remodeling' && feature.id !== 'vip4_exclusive_access' && feature.id !== 'vip4_lewd_mark' && feature.id !== 'vip4_closed_space_common_sense' && feature.id !== 'vip4_fetish_implant' && feature.id !== 'vip4_fetish_aversion' && feature.id !== 'vip4_masturbation_punishment' && feature.id !== 'vip5_ability_erotic' && feature.id !== 'vip5_moral_reform' && feature.id !== 'vip5_permanent' && feature.id !== 'vip5_permanent_false_memory' && feature.id !== 'vip5_permanent_personality' && feature.id !== 'vip5_personality_kill' && (
-                      <textarea
-                        placeholder={feature.notePlaceholder || '在此输入具体指令备注...'}
-                        value={feature.userNote || ''}
-                        onChange={e => updateFeatureNote(feature.id, e.target.value)}
-                        className="w-full mt-3 bg-black/30 border border-white/10 rounded-lg p-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-pink-500/50 transition-colors resize-none h-16"
-                      />
-                    )}
+                    {feature.id !== 'vip4_course_edit' &&
+                      feature.id !== 'vip5_open_space_common_sense' &&
+                      feature.id !== 'vip1_temp_sensitivity' &&
+                      feature.id !== 'vip2_pleasure' &&
+                      feature.id !== 'vip3_forced' &&
+                      feature.id !== 'vip3_conditioned_reflex' &&
+                      feature.id !== 'vip4_breast_remodeling' &&
+                      feature.id !== 'vip4_genital_remodeling' &&
+                      feature.id !== 'vip4_race_remodeling' &&
+                      feature.id !== 'vip4_butt_remodeling' &&
+                      feature.id !== 'vip4_urethra_remodeling' &&
+                      feature.id !== 'vip4_exclusive_access' &&
+                      feature.id !== 'vip4_lewd_mark' &&
+                      feature.id !== 'vip4_closed_space_common_sense' &&
+                      feature.id !== 'vip4_fetish_implant' &&
+                      feature.id !== 'vip4_fetish_aversion' &&
+                      feature.id !== 'vip4_masturbation_punishment' &&
+                      feature.id !== 'vip5_ability_erotic' &&
+                      feature.id !== 'vip5_moral_reform' &&
+                      feature.id !== 'vip5_permanent' &&
+                      feature.id !== 'vip5_permanent_false_memory' &&
+                      feature.id !== 'vip5_permanent_personality' &&
+                      feature.id !== 'vip5_personality_kill' && (
+                        <textarea
+                          placeholder={feature.notePlaceholder || '在此输入具体指令备注...'}
+                          value={feature.userNote || ''}
+                          onChange={e => updateFeatureNote(feature.id, e.target.value)}
+                          className="w-full mt-3 bg-black/30 border border-white/10 rounded-lg p-2 text-xs text-white placeholder-gray-600 focus:outline-none focus:border-pink-500/50 transition-colors resize-none h-16"
+                        />
+                      )}
                   </div>
                 )}
               </div>
@@ -2991,8 +3033,10 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                       {Math.max(0, userData.mcEnergyMax - Math.floor(userData.mcEnergy)) <= 0
                         ? '已满'
                         : `¥${(
-                            Math.min(Math.max(0, userData.mcEnergyMax - Math.floor(userData.mcEnergy)), quickSupplyQty) *
-                            100
+                            Math.min(
+                              Math.max(0, userData.mcEnergyMax - Math.floor(userData.mcEnergy)),
+                              quickSupplyQty,
+                            ) * 100
                           ).toLocaleString()}`}
                     </span>
                   </div>
@@ -3039,9 +3083,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                   const price = SUBSCRIPTION_PRICES[tier];
                   const isCurrent = subscription?.tier === tier;
                   const hasHigherTier =
-                    Boolean(subscription) && subscriptionTiers.indexOf(tier) < subscriptionTiers.indexOf(subscription!.tier);
-                  const label =
-                    !subscription ? '解锁' : isCurrent ? '当前等级' : hasHigherTier ? '已拥有' : '升级';
+                    Boolean(subscription) &&
+                    subscriptionTiers.indexOf(tier) < subscriptionTiers.indexOf(subscription!.tier);
+                  const label = !subscription ? '解锁' : isCurrent ? '当前等级' : hasHigherTier ? '已拥有' : '升级';
                   return (
                     <button
                       key={tier}
@@ -3072,10 +3116,10 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
         className="bg-gray-900/95 backdrop-blur-xl border-t border-white/10 p-4 pb-8 rounded-t-2xl shadow-[0_-5px_30px_rgba(0,0,0,0.6)] animate-slide-up shrink-0"
       >
         {/* Start Button */}
-          <button
-            onClick={handleStart}
-            disabled={!hasSessionFeaturesEnabled}
-            className={`
+        <button
+          onClick={handleStart}
+          disabled={!hasSessionFeaturesEnabled}
+          className={`
                  w-full py-3 rounded-xl font-bold text-white shadow-lg flex items-center justify-center gap-2 transition-all
                  ${
                    hasSessionFeaturesEnabled
@@ -3083,10 +3127,10 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                      : 'bg-gray-700 text-gray-400 cursor-not-allowed'
                  }
                `}
-          >
-            <Zap size={18} fill="currentColor" />
-            {missingEnergy > 0 ? '能量不足' : '启动催眠'}
-          </button>
+        >
+          <Zap size={18} fill="currentColor" />
+          {missingEnergy > 0 ? '能量不足' : '启动催眠'}
+        </button>
 
         {/* Cost Summary */}
         <div className="flex justify-between mt-2 px-1 text-[10px] text-gray-500">
@@ -3135,7 +3179,9 @@ export const HypnosisApp: React.FC<HypnosisAppProps> = ({ userData, onUpdateUser
                         });
                       }
 
-                      void MvuBridge.appendThisTurnAppOperationLog(`补齐资源（-¥${topUpCost.toLocaleString()}, +${missingEnergy} MC）`);
+                      void MvuBridge.appendThisTurnAppOperationLog(
+                        `补齐资源（-¥${topUpCost.toLocaleString()}, +${missingEnergy} MC）`,
+                      );
                       setShowLowEnergyModal(false);
                     })()
                   }

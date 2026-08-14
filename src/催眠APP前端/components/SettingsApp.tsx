@@ -95,10 +95,7 @@ export const SettingsApp: React.FC<{ onBack: () => void }> = ({ onBack }) => {
   const handleTest = async () => {
     setTesting(true);
     setTestResult(null);
-    const result = await generateChat(
-      [{ role: 'user', content: '请只回复两个字：正常' }],
-      { settings },
-    );
+    const result = await generateChat([{ role: 'user', content: '请只回复两个字：正常' }], { settings });
     setTesting(false);
     if (result.ok) {
       setTestResult({ ok: true, message: `连接成功：${result.text.slice(0, 60)}` });
@@ -248,10 +245,9 @@ export const SettingsApp: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                       <span className="truncate">{settings.model.trim() || '选择模型'}</span>
                       <ChevronDown
                         size={14}
-                        className={[
-                          'shrink-0 text-white/40 transition-transform',
-                          modelsOpen ? 'rotate-180' : '',
-                        ].join(' ')}
+                        className={['shrink-0 text-white/40 transition-transform', modelsOpen ? 'rotate-180' : ''].join(
+                          ' ',
+                        )}
                       />
                     </button>
                     {modelsOpen && (
@@ -266,9 +262,7 @@ export const SettingsApp: React.FC<{ onBack: () => void }> = ({ onBack }) => {
                             }}
                             className={[
                               'w-full text-left px-3 py-2 text-sm truncate transition-colors',
-                              m === settings.model
-                                ? 'bg-cyan-500/15 text-cyan-200'
-                                : 'text-white/80 hover:bg-white/5',
+                              m === settings.model ? 'bg-cyan-500/15 text-cyan-200' : 'text-white/80 hover:bg-white/5',
                             ].join(' ')}
                           >
                             {m}
@@ -353,9 +347,9 @@ export const SettingsApp: React.FC<{ onBack: () => void }> = ({ onBack }) => {
         )}
 
         <div className="text-[10px] text-white/35 leading-relaxed px-1">
-          说明：副 API 用于论坛更新、副 AI 生成帖子、每日挑战等大量文本任务，与酒馆主模型解耦。
-          端点需支持 CORS 与 OpenAI 兼容的 <span className="text-white/50">/chat/completions</span> 格式；API Key
-          保存在浏览器 localStorage 中，请勿用于公开分发的环境。
+          说明：副 API 用于论坛更新、副 AI 生成帖子、每日挑战等大量文本任务，与酒馆主模型解耦。 端点需支持 CORS 与
+          OpenAI 兼容的 <span className="text-white/50">/chat/completions</span> 格式；API Key 保存在浏览器 localStorage
+          中，请勿用于公开分发的环境。
         </div>
       </div>
     </div>
