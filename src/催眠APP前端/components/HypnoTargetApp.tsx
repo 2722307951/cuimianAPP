@@ -211,7 +211,9 @@ export const HypnoTargetApp: React.FC<HypnoTargetAppProps> = ({ onBack }) => {
           <div className="text-sm font-bold tracking-wide">催眠对象</div>
           <div className="text-[11px] text-gray-400">填写角色档案 · 写入酒馆输入框</div>
         </div>
-        <span className={`text-[11px] font-semibold tabular-nums ${completionPercent === 100 ? 'text-emerald-300' : 'text-white/40'}`}>
+        <span
+          className={`text-[11px] font-semibold tabular-nums ${completionPercent === 100 ? 'text-emerald-300' : 'text-white/40'}`}
+        >
           {completionPercent}%
         </span>
       </div>
@@ -232,7 +234,13 @@ export const HypnoTargetApp: React.FC<HypnoTargetAppProps> = ({ onBack }) => {
             <SectionHeader icon={<Info size={15} />} title="基本信息" hint="必填" />
             <div className="rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl p-3 space-y-3">
               <div>
-                <FieldLabel htmlFor="hypno-target-name" label="角色名称" required count={roleName.length} max={LIMITS.roleName} />
+                <FieldLabel
+                  htmlFor="hypno-target-name"
+                  label="角色名称"
+                  required
+                  count={roleName.length}
+                  max={LIMITS.roleName}
+                />
                 <input
                   id="hypno-target-name"
                   type="text"
@@ -244,7 +252,13 @@ export const HypnoTargetApp: React.FC<HypnoTargetAppProps> = ({ onBack }) => {
                 />
               </div>
               <div>
-                <FieldLabel htmlFor="hypno-target-work-name" label="作品名字" required count={workName.length} max={LIMITS.workName} />
+                <FieldLabel
+                  htmlFor="hypno-target-work-name"
+                  label="作品名字"
+                  required
+                  count={workName.length}
+                  max={LIMITS.workName}
+                />
                 <input
                   id="hypno-target-work-name"
                   type="text"
@@ -267,7 +281,12 @@ export const HypnoTargetApp: React.FC<HypnoTargetAppProps> = ({ onBack }) => {
             <SectionHeader icon={<FileText size={15} />} title="补充设定" hint="选填" />
             <div className="rounded-2xl border border-white/10 bg-black/30 backdrop-blur-xl p-3 space-y-3">
               <div>
-                <FieldLabel htmlFor="hypno-target-extra-info" label="补充信息" count={extraInfo.length} max={LIMITS.extraInfo} />
+                <FieldLabel
+                  htmlFor="hypno-target-extra-info"
+                  label="补充信息"
+                  count={extraInfo.length}
+                  max={LIMITS.extraInfo}
+                />
                 <textarea
                   id="hypno-target-extra-info"
                   value={extraInfo}
@@ -278,7 +297,12 @@ export const HypnoTargetApp: React.FC<HypnoTargetAppProps> = ({ onBack }) => {
                 />
               </div>
               <div>
-                <FieldLabel htmlFor="hypno-target-extra-rules" label="补充规则" count={extraRules.length} max={LIMITS.extraRules} />
+                <FieldLabel
+                  htmlFor="hypno-target-extra-rules"
+                  label="补充规则"
+                  count={extraRules.length}
+                  max={LIMITS.extraRules}
+                />
                 <textarea
                   id="hypno-target-extra-rules"
                   value={extraRules}
@@ -327,7 +351,9 @@ export const HypnoTargetApp: React.FC<HypnoTargetAppProps> = ({ onBack }) => {
                 )}
               </div>
 
-              <p className={`mt-3 text-[11px] leading-relaxed ${isAtHypnoTargetLimit ? 'text-rose-300' : 'text-white/40'}`}>
+              <p
+                className={`mt-3 text-[11px] leading-relaxed ${isAtHypnoTargetLimit ? 'text-rose-300' : 'text-white/40'}`}
+              >
                 {isAtHypnoTargetLimit
                   ? `当前催眠APP等级仅可容纳 ${hypnoTargetLimit} 名催眠对象，已达到上限。`
                   : `当前催眠APP等级最多可容纳 ${hypnoTargetLimit} 名催眠对象。`}
