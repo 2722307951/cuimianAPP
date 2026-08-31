@@ -11,6 +11,7 @@ pnpm-debug.log*
 
 auto-imports.d.ts
 components.d.ts
+<<<<<<< HEAD
 
 # 无关的游戏数据/临时文件（非前端项目内容）
 .weibo_tmp/
@@ -18,3 +19,5 @@ components.d.ts
 rank15.js
 extract_skins.py
 merge_weibo_dates.js
+=======
+>>>>>>> 457044c57ea6141e665c88603ea84d7542da64a4
